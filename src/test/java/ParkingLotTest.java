@@ -1,18 +1,16 @@
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
 
 public class ParkingLotTest {
     @Test
-    public void shouldReturnReceiptWithParkingSuccessWhenPushCarGivenAParkingLotWith1SpaceAndACarToPark() {
+    public void shouldReturnReceiptWhenPushCarGivenAParkingLotWith1SpaceAndACarToPark() {
         ParkingLot parkingLot = new ParkingLot(1);
         Car car = new Car();
 
         Receipt receipt = parkingLot.push(car);
 
-        assertEquals("Parking Successful", receipt.getMessage());
+        assertNotNull(receipt);
     }
 
     @Test
@@ -40,14 +38,14 @@ public class ParkingLotTest {
     @Test
     public void shouldReturnNullWhenPopCarGivenAParkingLotWithACarParkingAndIllegalReceipt() {
         ParkingLot parkingLot = new ParkingLot(1);
-        Receipt receipt = new Receipt("I want to pick up car");
+        Receipt receipt = new Receipt();
 
         Car car = parkingLot.pop(receipt);
         assertNull(car);
     }
 
     @Test
-    public void shouldReturnReceiptWithParkingSuccessfulWhenPushPopPushCarGivenAParkingLotWith1SpaceAndACar() {
+    public void shouldReturnReceiptWhenPushPopPushCarGivenAParkingLotWith1SpaceAndACar() {
         ParkingLot parkingLot = new ParkingLot(1);
         Car car = new Car();
 
@@ -55,7 +53,7 @@ public class ParkingLotTest {
         parkingLot.pop(receipt1);
         Receipt receipt2 = parkingLot.push(car);
 
-        assertEquals("Parking Successful", receipt2.getMessage());
+        assertNotNull(receipt2);
     }
 
     @Test

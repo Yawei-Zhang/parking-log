@@ -13,7 +13,7 @@ public class ParkingLot {
         if(carMap.size() >= capacity){
             return null;
         }
-        Receipt receipt = new Receipt("Parking Successful");
+        Receipt receipt = new Receipt();
         carMap.put(receipt, car);
         return receipt;
     }
